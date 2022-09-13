@@ -2,6 +2,7 @@ import {useEffect, useState} from "react";
 import styled from 'styled-components';
 import {Splide, SplideSlide} from '@splidejs/react-splide'
 import '@splidejs/react-splide/css';
+import {Link} from "react-router-dom"
 
 function Veggie() {
 
@@ -39,11 +40,12 @@ function Veggie() {
                     {veggie.map((recipe) => {
                         return (
                             <SplideSlide key={recipe.id}>
-
                                 <Card>
-                                    <p>{recipe.title}</p>
-                                    <img src={recipe.image} alt={recipe.title}/>
-                                    <Gradient/>
+                                    <Link to={"/veggie/" + recipe.id}>
+                                        <p>{recipe.title}</p>
+                                        <img src={recipe.image} alt={recipe.title}/>
+                                        <Gradient/>
+                                    </Link>
                                 </Card>
                             </SplideSlide>
                         )
@@ -53,6 +55,7 @@ function Veggie() {
         </div>
     );
 }
+
 const Wrapper = styled.div`
   margin: 4rem 0.1rem;
 `
